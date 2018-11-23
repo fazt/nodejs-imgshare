@@ -1,0 +1,67 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h2>{{ image.title }}</h2>
+    <button class="btn btn-primary" id="btn-delete" data-id="{{image.uniqueId}}">
+      <i class="fa fa-times"></i> Delete
+    </button>
+  </div>
+  <div class="card-body">
+    <p>{{ image.description }}</p>
+    <div class="text-center">
+      <img src="/public/upload/{{image.filename}}" class="img-fluid">
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-success" id="btn-like" data-id="{{image.filename}}">
+      <i class="fas fa-thumbs-up"></i> Like
+    </button>
+      <span class="likes-count">{{image.likes}}</span>
+      <i class="fas fa-heart"></i>
+    {{image.views}}
+    {{timeago image.timestamp}}
+  </div>
+</div>
+
+<!-- COMMENTS -->
+<div class="card mt-2">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3>Comments</h3>
+    <button class="btn btn-info" id="btn-toggle-comment">
+     <i class="fa fa-comments-o"></i> Post a Comment
+    </button>
+  </div>
+  <div class="card-body">
+    <blockquote id="post-comment">
+      <form action="/images/{{ image.uniqueId }}/comment" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" name="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <textarea name="comment" rows="2" placeholder="Your Comment"></textarea>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success" id="btn-comment">
+            <i class="fa fa-comment"></i> Post
+          </button>
+        </div>
+      </form>      
+    </blockquote>
+    <ul>
+      {{#each comments}}
+        <li>
+          <a href="#">
+            <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" />
+          </a>
+          <p>
+            {{comment}}
+            - {{name}}
+            - {{timeago timestamp}}
+          </p>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>

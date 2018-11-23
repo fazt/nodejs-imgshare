@@ -1,0 +1,23 @@
+<div class="card mt-2">
+  <div class="card-header">
+    <h5>
+      <i class="fas fa-comments"></i> Latest Comments
+    </h5>
+  </div>
+  <div class="card-body">
+    <ul class="list-group">
+      {{#each sidebar.comments}}
+      <li class="d-flex list-group-item list-group-item-action align-items-start">
+          <a href="/images/{{image.uniqueId}}">
+            <img src="/public/upload/{{image.filename}}" class="img-thumbnail w-70">
+          </a>
+          <div class="w-100">
+            <p>{{comment}}</p>
+            <p>{{name}}</p>
+            <p>{{timeago timestamp}}</p>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+</div>
