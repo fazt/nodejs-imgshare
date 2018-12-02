@@ -6,20 +6,21 @@ const md5 = require('md5');
 const ctrl = {};
 
 const sidebar = require('../helpers/sidebar');
+const { randomNumber } = require('../helpers/libs');
 const { Image, Comment } = require('../models');
 
 ctrl.index = async (req, res) => {
-  const viewModel = { image: {}, comments: [] };
+  let viewModel = { image: {}, comments: [] };
   const image = await Image.findOne({filename: { $regex: req.params.image_id }});
   if (image) {
     image.views = image.views + 1;
     viewModel.image = image;
     image.save();
-    const comments = await Comment.find({image_id: image._id}, {}, {sort: {'timestamp': 1}});
+    const comments = await Comment.find({image_id: image._id})
+      .sort({'timestamp': 1});
     viewModel.comments = comments;
-    sidebar(viewModel, (viewModel) => {
-      res.render('image', viewModel);
-    });
+    viewModel = await sidebar(viewModel);
+    res.render('image', viewModel);
   } else {
     res.redirect('/');
   }
@@ -27,11 +28,7 @@ ctrl.index = async (req, res) => {
 
 ctrl.create = (req, res) => {
   const saveImage = async () => {
-    const possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
-    let imgUrl = '';
-    for(let i = 0;i < 6; i++) {
-      imgUrl += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
+    const imgUrl = randomNumber();
     const images = await Image.find({ filename: imgUrl });
     if (images.length > 0) {
       saveImage()
@@ -40,7 +37,6 @@ ctrl.create = (req, res) => {
       const imageTempPath = req.file.path;
       const ext = path.extname(req.file.originalname).toLowerCase();
       const targetPath = path.resolve(`src/public/upload/${imgUrl}${ext}`);
-      console.log(targetPath);
 
       // Validate Extension
       if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif') {

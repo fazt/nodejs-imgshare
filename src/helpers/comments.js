@@ -1,17 +1,17 @@
 const { Comment, Image } = require('../models');
-const async = require('async');
 
 module.exports = {
-  newest: async function(cb) {
-    const comments = await Comment.find({}, {}, { limit: 5, sort: { 'timestamp': -1}});
-    function attachImage(comment, next) {
-      Image.findOne({_id: comment.image_id}, function(err, image) {
-        comment.image = image;
-        next(err);
-      });
+  async newest () {
+
+    const comments = await Comment.find()
+      .limit(5)
+      .sort({timestamp: -1});
+
+    for(const comment of comments) {
+      const image = await Image.findOne({_id: comment.image_id});
+      comment.image = image;
     }
-    async.each(comments, attachImage, function(err) {
-      cb(err, comments);
-    });
+
+    return comments;
   }
 };

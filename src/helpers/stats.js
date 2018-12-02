@@ -1,50 +1,53 @@
 const { Comment, Image } = require('../models');
 
-const async = require('async');
+async function imageCounter() {
+  return await Image.countDocuments();
+};
 
-module.exports = function(callback) {
-  async.parallel([
-    function(next) {
-      Image.countDocuments(function(err, total) {
-        next(err, total);
-      });
-    },
-    function(next) {
-      Comment.countDocuments(function(err, total) {
-        next(err, total);
-      });
-    },
-    function(next) {
-      Image.aggregate([{$group: {
-        _id: '1',
-        viewsTotal: {$sum: '$views'}
-      }}], function(err, result) {
-        let viewsTotal = 0;
-        if(result.length > 0) {
-          viewsTotal += result[0].viewsTotal;
-        }
-        next(null, viewsTotal);
-      })
-    },
-    function(next) {
-      Image.aggregate([{$group: {
-        _id: '1',
-        likesTotal: {$sum: '$likes'}
-      }}], function (err, result) {
-        let likesTotal = 0;
-        if (result.length > 0) {
-          likesTotal += result[0].likesTotal;
-        }
-        next(null, likesTotal);
-      })
-    }],
-    function(err, results) {
-      callback(null, {
-        images: results[0],
-        comments: results[1],
-        views: results[2],
-        likes: results[3]
-      })
-    }
-  )
+
+async function commentsCounter() {
+  return await Comment.countDocuments();
 }
+
+async function imageTotalViewsCounter() {
+  const result = await Image.aggregate([{$group: {
+    _id: '1',
+    viewsTotal: {$sum: '$views'}
+  }}]);
+  let viewsTotal = 0;
+  if(result.length > 0) {
+    viewsTotal += result[0].viewsTotal;
+  }
+  return viewsTotal;
+}
+
+async function likesTotalCounter() {
+
+  const result = await Image.aggregate([{$group: {
+    _id: '1',
+    likesTotal: {$sum: '$likes'}
+  }}]);
+
+  let likesTotal = 0;
+  if (result.length > 0) {
+    likesTotal += result[0].likesTotal;
+  }
+  return likesTotal;
+}
+
+module.exports = async () => {
+
+  const results = await Promise.all([
+    imageCounter(),
+    commentsCounter(),
+    imageTotalViewsCounter(),
+    likesTotalCounter()
+  ]);
+
+  return {
+    images: results[0],
+    comments: results[1],
+    views: results[2],
+    likes: results[3]
+  } 
+};

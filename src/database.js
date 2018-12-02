@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/imgshare', {
+const { database } = require('./keys');
+
+mongoose.connect(database.URI, {
   useNewUrlParser: true    
 })
   .then(db => console.log('db is connected'))
