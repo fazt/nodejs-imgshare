@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <form action="/signup" method="POST">
+          <div class="form-group">
+            <input type="text" name="email" class="form-control" placeholder="youremail@company.com" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <input type="password" name="confirm-password" class="form-control" placeholder="Confirm Password">
+          </div>
+          <button class="btn btn-success btn-block">
+            SignUp
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

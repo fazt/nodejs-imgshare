@@ -2,24 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>imgShare</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!-- BOOTSTRAP -->
-    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css">
-    <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="/public/css/styles.css">
+    {{>head}}
   </head>
   <body>
-
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container">
-        <a class="navbar-brand" href="/">
-          <img src="/public/images/imgshare-logo.png" alt="imgShare">
-        </a>
-      </div>
-    </nav>
+    {{>navigation}}
 
     <div class="container p-4">
       <div class="row">
@@ -39,7 +25,7 @@
       <div class="container p-2">
         <div class="row">
           <div class="mx-auto text-center">
-            <p>imgShare.io | &copy; Copyright 2018, All rights reserved</p>
+            <p>imgShare.io | &copy; Copyright {{getCurrentYear}}, All rights reserved</p>
             <p>
               <i class="fab fa-twitter-square fa-2x"></i>
               <i class="fab fa-facebook-square fa-2x"></i>
@@ -50,10 +36,7 @@
     </footer>
 
     <!-- SCRIPTS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+    {{>footer}}
     <script src="/public/js/scripts.js"></script>
   </body>
 </html>

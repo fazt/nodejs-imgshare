@@ -1,18 +1,18 @@
 <div class="card">
 
-  <div class="card-header bg-dark">
-    <h3 class="card-title text-white">
-      <i class="far fa-image"></i> Upload an Image
-    </h3>
+  <div class="card-header bg-dark text-white">
+    <i class="far fa-image"></i> Upload an Image
   </div>
 
+  {{!-- IMAGE UPLOAD FORM --}}
   <div class="card-body">
     <form action="/images" method="POST" enctype="multipart/form-data">
 
       <div class="form-group">
         <div class="input-group">
           <div class="custom-file">
-            <input type="file" name="image" class="custom-file-input" id="inputGroupFile" aria-describedby="inputGroupFileAddon" required/>
+            <input type="file" name="image" class="custom-file-input" id="inputGroupFile"
+              aria-describedby="inputGroupFileAddon" required />
             <label class="custom-file-label" for="inputGroupFile">Choose file</label>
           </div>
         </div>
@@ -21,21 +21,25 @@
       <div class="form-group">
         <input type="text" name="title" class="form-control" placeholder="Title for the Image" required>
       </div>
+
       <div class="form-group">
-        <textarea name="description" rows="2" class="form-control" placeholder="Deescription for the Image" required></textarea>
+        <textarea name="description" rows="2" class="form-control" placeholder="Deescription for the Image"
+          required></textarea>
       </div>
+
       <div class="form-group">
         <button class="btn btn-success">
           <i class="fa fa-upload"></i> Upload Image
         </button>
       </div>
+
     </form>
   </div>
 </div>
 
 <div class="card mt-2">
   <div class="card-header bg-dark text-white">
-    <h3><i class="far fa-images"></i> Recent Uploads</h3>
+    <i class="far fa-images"></i> Recent Uploads
   </div>
   <div class="card-body">
     <div class="row">
