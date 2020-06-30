@@ -9,12 +9,15 @@ ctrl.renderSignUp = (req, res) => {
 };
 
 ctrl.renderSignIn = (req, res) => {
-  res.render('authentication/signin');
+  res.render('authentication/signin', {
+    layout: 'nostats'
+  });
 };
 
 ctrl.signUp = passport.authenticate('signup', {
-  successRedirect: '/',
-  failureRedirect: '/signup'
+  successRedirect: '/signin',
+  failureRedirect: '/signup',
+  failureFlash: true
 });
 
 ctrl.signIn = (req, res) => {

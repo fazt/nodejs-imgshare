@@ -1,12 +1,14 @@
 <div class="row">
   <div class="col-md-4 offset-md-4">
 
+    {{#if error}}
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+      {{error}}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+    {{/if}}
 
     <div class="card">
       <div class="card-body">
@@ -26,5 +28,6 @@
         </form>
       </div>
     </div>
+
   </div>
 </div>

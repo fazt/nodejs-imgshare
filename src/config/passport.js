@@ -9,16 +9,27 @@ passport.use(
     {
       usernameField: "email",
       passwordField: "password",
+      passReqToCallback: true
     },
-    async (email, password, done) => {
+    async (req, email, password, done) => {
+      // Search an existing email
       const userFound = await User.findOne({ email });
+
+      // return an error if the email already exists
       if (userFound) {
         return done(null, false, { message: "The username is already Taken" });
       }
+
+      // create a new User
       const newUser = new User();
       newUser.email = email;
       newUser.password = await User.encryptPassword(password);
       const userSaved = await newUser.save()
+
+      // create a success message
+      req.flash('success','Ingresa con tu nueva cuenta');
+
+      // return the session
       return done(null, userSaved);
     }
   )
