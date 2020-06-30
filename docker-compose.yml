@@ -1,0 +1,20 @@
+version: "3"
+
+services: 
+  web:
+    container_name: web
+    image: node
+    build: .
+    ports: 
+      - 3000:3000
+    links: 
+      - mongo
+    environment: 
+      - MONGODB_URI=mongodb://mongo/database
+  mongo:
+    container_name: mongodb
+    image: mongo
+    ports: 
+      - 27017:27017
+
+  
