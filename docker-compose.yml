@@ -9,6 +9,8 @@ services:
       - 3000:3000
     links: 
       - mongo
+    volumes: 
+      - .:/usr/src/app
     environment: 
       - MONGODB_URI=mongodb://mongo/database
   mongo:

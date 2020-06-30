@@ -16,8 +16,8 @@ module.exports = app => {
   router.delete('/images/:image_id', image.remove);
   
   // Authentication routes
-  router.get('/signin', auth.renderSignIn);
-  router.post('/signin', auth.signIn);
+  router.get('/auth/signin', auth.renderSignIn);
+  router.post('/auth/signin', auth.signIn);
 
   router.get('/signup', auth.renderSignUp);
   router.post('/signup', auth.signUp);

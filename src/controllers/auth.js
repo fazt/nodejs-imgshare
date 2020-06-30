@@ -1,32 +1,34 @@
-const passport = require('passport');
+const passport = require("passport");
 
 const ctrl = {};
 
 ctrl.renderSignUp = (req, res) => {
-  res.render('authentication/signup', {
-    layout: 'nostats'
+  res.render("authentication/signup", {
+    layout: "nostats",
   });
 };
 
 ctrl.renderSignIn = (req, res) => {
-  res.render('authentication/signin', {
-    layout: 'nostats'
+  res.render("authentication/signin", {
+    layout: "nostats",
   });
 };
 
-ctrl.signUp = passport.authenticate('signup', {
-  successRedirect: '/signin',
-  failureRedirect: '/signup',
-  failureFlash: true
+ctrl.signUp = passport.authenticate("signup", {
+  successRedirect: "/signin",
+  failureRedirect: "/signup",
+  failureFlash: true,
 });
 
-ctrl.signIn = (req, res) => {
-  res.send('signin');
-};
+ctrl.signIn = passport.authenticate("signin", {
+  successRedirect: "/",
+  failureRedirect: "/signin",
+  failureFlash: true,
+});
 
 ctrl.logout = (req, res) => {
   req.logout();
-  res.redirect('/');
-}
+  res.redirect("/");
+};
 
 module.exports = ctrl;

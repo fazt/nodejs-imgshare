@@ -1,7 +1,7 @@
 const passport = require("passport");
 const { Strategy } = require("passport-local");
 
-const User = require("../models/User");
+const User = require("../models/user");
 
 passport.use(
   "signup",
@@ -9,7 +9,7 @@ passport.use(
     {
       usernameField: "email",
       passwordField: "password",
-      passReqToCallback: true
+      passReqToCallback: true,
     },
     async (req, email, password, done) => {
       // Search an existing email
@@ -24,13 +24,37 @@ passport.use(
       const newUser = new User();
       newUser.email = email;
       newUser.password = await User.encryptPassword(password);
-      const userSaved = await newUser.save()
+      const userSaved = await newUser.save();
 
       // create a success message
-      req.flash('success','Ingresa con tu nueva cuenta');
+      req.flash("success", "Ingresa con tu nueva cuenta");
 
       // return the session
       return done(null, userSaved);
+    }
+  )
+);
+
+passport.use(
+  "signin",
+  new Strategy(
+    {
+      passwordField: "password",
+      usernameField: "email",
+    },
+    async (email, password, done) => {
+      // Find the user by email
+      const userFound = await User.findOne({ email });
+
+      // if user does not exists
+      if (!userFound) return done(null, false, { message: "Not User found." });
+
+      // match password
+      const match = await userFound.matchPassword(password);
+
+      if (!match) return done(null, false, { message: "Incorrect Password." });
+
+      return done(null, userFound);
     }
   )
 );

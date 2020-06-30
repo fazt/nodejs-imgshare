@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const ObjectId = Schema.ObjectId;
-const path = require('path');
 
 const CommentSchema = new Schema({
   image_id: { type: ObjectId },
