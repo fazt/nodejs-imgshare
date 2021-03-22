@@ -1,5 +1,3 @@
-module.exports = {
-  Image: require("./image"),
-  Comment: require("./comment"),
-  User: require("./user"),
-};
+export { default as Comment } from "./comment";
+export { default as Image } from "./image";
+export { default as User } from "./user";

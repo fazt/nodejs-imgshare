@@ -1,12 +1,8 @@
-const { Image } = require('../models');
+import { Image } from "../models";
 
-module.exports = {
-
+export default {
   async popular() {
-    const images = await Image.find()
-      .limit(9)
-      .sort({likes: -1});
+    const images = await Image.find().limit(9).sort({ likes: -1 });
     return images;
-  }
-
+  },
 };

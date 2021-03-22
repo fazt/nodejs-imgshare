@@ -2,7 +2,10 @@
 node_modules
 
 # uploads folder
-src/public/upload
+uploads
 
 # environment variables
 .env
+
+## Dist
+dist

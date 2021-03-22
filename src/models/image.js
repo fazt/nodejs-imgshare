@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
-const path = require('path');
+import { Schema, model } from "mongoose";
+import path from "path";
 
 const ImageSchema = new Schema({
   title: { type: String },
@@ -8,12 +7,11 @@ const ImageSchema = new Schema({
   filename: { type: String },
   views: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
-  timestamp: { type: Date, default: Date.now }
+  timestamp: { type: Date, default: Date.now },
 });
 
-ImageSchema.virtual('uniqueId')
-  .get(function () {
-    return this.filename.replace(path.extname(this.filename), '');
-  });
+ImageSchema.virtual("uniqueId").get(function () {
+  return this.filename.replace(path.extname(this.filename), "");
+});
 
-module.exports = mongoose.model('Image', ImageSchema);
+export default model("Image", ImageSchema);

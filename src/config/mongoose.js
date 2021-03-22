@@ -1,11 +1,13 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import config from "../config";
 
-const { database } = require("../keys");
+const { database } = config;
 
-mongoose
-  .connect(database.URI, {
+(async () => {
+  const db = await mongoose.connect(database.URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
-  .then((db) => console.log("db is connected"))
-  .catch((err) => console.log(err));
+    useCreateIndex: true,
+  });
+  console.log("db is connected: ", db.connection.name);
+})();

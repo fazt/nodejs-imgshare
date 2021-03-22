@@ -1,11 +1,10 @@
-const passport = require("passport");
-const { Strategy } = require("passport-local");
-
-const User = require("../models/user");
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import { User } from "../models";
 
 passport.use(
   "signup",
-  new Strategy(
+  new LocalStrategy(
     {
       usernameField: "email",
       passwordField: "password",
@@ -37,7 +36,7 @@ passport.use(
 
 passport.use(
   "signin",
-  new Strategy(
+  new LocalStrategy(
     {
       passwordField: "password",
       usernameField: "email",

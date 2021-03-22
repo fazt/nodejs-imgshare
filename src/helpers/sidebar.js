@@ -1,13 +1,12 @@
-const Stats = require('./stats');
-const Images = require('./images');
-const Comments = require('./comments');
+import Stats from "./stats";
+import Images from "./images";
+import Comments from "./comments";
 
-module.exports = async viewModel => {
-
+export default async (viewModel) => {
   const results = await Promise.all([
     Stats(),
     Images.popular(),
-    Comments.newest()
+    Comments.newest(),
   ]);
 
   viewModel.sidebar = {
@@ -17,5 +16,4 @@ module.exports = async viewModel => {
   };
 
   return viewModel;
-
 };

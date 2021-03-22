@@ -1,12 +1,8 @@
-require("dotenv").config();
-const express = require("express");
-const config = require("./server/config");
-const app = config(express());
+import app from "./app";
 
 // database
-require("./config/mongoose");
+import "./config/mongoose";
 
 // Starting the server
-app.listen(app.get("port"), () => {
-  console.log("Server on port", app.get("port"));
-});
+app.listen(app.get("port"));
+console.log("Server on port", app.get("port"));

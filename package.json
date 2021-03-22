@@ -4,8 +4,12 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "dev": "nodemon src/",
-    "start": "node src/index.js"
+    "dev": "nodemon src/ --exec babel-node",
+    "start": "node dist/index.js",
+    "compile": "babel src -d dist",
+    "copyfiles": "ncp src/views dist/views && ncp src/public dist/public",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run compile && npm run copyfiles"
   },
   "keywords": [],
   "author": "",
@@ -17,19 +21,26 @@
     "dotenv": "^8.2.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
+    "express-handlebars": "^5.2.1",
     "express-session": "^1.17.1",
-    "fs-extra": "^9.0.1",
-    "handlebars": "^4.7.6",
+    "fs-extra": "^9.1.0",
+    "handlebars": "^4.7.7",
     "md5": "^2.3.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.8",
+    "mongoose": "^5.12.1",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6"
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@babel/preset-env": "^7.13.10",
+    "ncp": "^2.0.0",
+    "nodemon": "^2.0.7",
+    "rimraf": "^3.0.2"
   }
 }
