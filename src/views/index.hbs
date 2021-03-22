@@ -1,6 +1,6 @@
-<div class="card">
+<div class="card bg-dark text-white">
 
-  <div class="card-header bg-dark text-white">
+  <div class="card-header">
     <i class="far fa-image"></i> Upload an Image
   </div>
 
@@ -19,12 +19,13 @@
       </div>
 
       <div class="form-group">
-        <input type="text" name="title" class="form-control" placeholder="Title for the Image" required>
+        <input type="text" name="title" class="form-control bg-dark text-white border border-success"
+          placeholder="Title for the Image" required>
       </div>
 
       <div class="form-group">
-        <textarea name="description" rows="2" class="form-control" placeholder="Deescription for the Image"
-          required></textarea>
+        <textarea name="description" rows="2" class="form-control bg-dark text-white border border-success"
+          placeholder="Deescription for the Image" required></textarea>
       </div>
 
       <div class="form-group">
@@ -37,8 +38,8 @@
   </div>
 </div>
 
-<div class="card mt-2">
-  <div class="card-header bg-dark text-white">
+<div class="card mt-2 bg-dark text-white">
+  <div class="card-header">
     <i class="far fa-images"></i> Recent Uploads
   </div>
   <div class="card-body">
@@ -46,7 +47,7 @@
       {{#each images}}
       <div class="col-md-4 text-center">
         <a href="/images/{{ uniqueId  }}">
-          <img src="/uploads/{{filename}}" alt="{{title}}" class="w-100 h-100 img-thumbnail" style="object-fit: cover;">
+          <img src="/uploads/{{filename}}" alt="{{title}}" class="w-100 h-100" style="object-fit: cover;">
         </a>
       </div>
       {{/each}}

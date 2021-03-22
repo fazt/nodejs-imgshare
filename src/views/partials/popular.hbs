@@ -1,7 +1,7 @@
-<div class="card mb-2">
+<div class="card mb-2 bg-dark text-white">
 
-  <div class="card-header bg-dark text-white">
-    <h5>
+  <div class="card-header">
+    <h5 class="card-title">
       <i class="fas fa-fire"></i> Most Popular
     </h5>
   </div>
@@ -9,11 +9,11 @@
   <div class="card-body">
     <div class="row">
       {{#each sidebar.popular}}
-        <div class="col-md-4">
-          <a href="/images/{{uniqueId}}">
-            <img src="/public/upload/{{filename}}" class="w-100 h-100 image-thumbnail">
-          </a>
-        </div>
+      <div class="col-md-4">
+        <a href="/images/{{uniqueId}}">
+          <img src="/uploads/{{filename}}" class="w-100 h-100 image-thumbnail" style="object-fit: cover;">
+        </a>
+      </div>
       {{/each}}
     </div>
   </div>

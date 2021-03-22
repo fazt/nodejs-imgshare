@@ -14,16 +14,17 @@
           <a class="nav-link" href="/auth/signin">SignIn</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/signup">SignUp</a>
+          <a class="nav-link" href="/auth/signup">SignUp</a>
         </li>
         {{else}}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/profile" id="navbarDropdown" role="button" data-toggle="dropdown"
+          <a class="nav-link dropdown-toggle" href="/#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
             Profile
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/logout">Logout</a>
+            <a class="dropdown-item" href="/profile">Settings</a>
+            <a class="dropdown-item" href="/auth/logout">Logout</a>
           </div>
         </li>
         {{/unless}}

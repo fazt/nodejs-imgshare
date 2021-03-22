@@ -11,8 +11,9 @@
     </div>
     {{/if}}
 
-    <div class="card">
+    <div class="card bg-dark">
       <div class="card-body">
+        <h1 class="text-light">SignIn</h1>
         <form action="/auth/signin" method="POST">
           <div class="form-group">
             <input type="text" name="email" class="form-control" placeholder="youremail@company.com" autofocus>
@@ -20,11 +21,8 @@
           <div class="form-group">
             <input type="password" name="password" class="form-control" placeholder="Password">
           </div>
-          <div class="form-group">
-            <input type="password" name="confirm-password" class="form-control" placeholder="Confirm Password">
-          </div>
           <button class="btn btn-success btn-block">
-            SignUp
+            Login
           </button>
         </form>
       </div>

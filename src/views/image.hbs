@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card bg-dark text-white">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h2>{{ image.title }}</h2>
-    <button class="btn btn-danger" id="btn-delete" data-id="{{image.uniqueId}}">
+    <h2 class="card-title">{{ image.title }}</h2>
+    <button class="btn btn-danger btn-sm" id="btn-delete" data-id="{{image.uniqueId}}">
       <i class="fa fa-times"></i> Delete
     </button>
   </div>
@@ -30,9 +30,9 @@
 </div>
 
 <!-- COMMENTS -->
-<div class="card mt-2">
+<div class="card mt-2 bg-dark text-white">
   <div class="card-header d-flex justify-content-between align-items-center">
-    <h3>Comments</h3>
+    <h3 class="card-title">Comments</h3>
     <button class="btn btn-info" id="btn-toggle-comment">
       <i class="fa fa-comments-o"></i> Post a Comment
     </button>
@@ -41,16 +41,19 @@
     <blockquote id="post-comment">
       <form action="/images/{{ image.uniqueId }}/comment" method="POST">
         <div class="form-group">
-          <input type="text" class="form-control" name="name" placeholder="Name">
+          <input type="text" class="form-control bg-dark text-light border border-success" name="name"
+            placeholder="Name">
         </div>
         <div class="form-group">
-          <input type="email" class="form-control" name="email" placeholder="Email">
+          <input type="email" class="form-control bg-dark text-light border border-success" name="email"
+            placeholder="Email">
         </div>
         <div class="form-group">
-          <textarea name="comment" class="form-control" rows="2" placeholder="Your Comment"></textarea>
+          <textarea name="comment" class="form-control bg-dark text-light border border-success" rows="2"
+            placeholder="Your Comment"></textarea>
         </div>
         <div class="form-group">
-          <button class="btn btn-success" id="btn-comment">
+          <button class="btn btn-outline-success" id="btn-comment">
             <i class="fa fa-comment"></i> Post
           </button>
         </div>

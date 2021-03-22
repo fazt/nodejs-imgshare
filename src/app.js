@@ -66,7 +66,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-routes(app);
+app.use(routes);
 
 // The Public directory for static files
 app.use("/public", express.static(path.join(__dirname, "./public")));
