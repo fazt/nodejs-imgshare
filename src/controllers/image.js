@@ -48,7 +48,7 @@ export const create = (req, res) => {
         // you wil need the public/temp path or this will throw an error
         await fs.rename(imageTempPath, targetPath);
 
-        // create a new image 
+        // create a new image
         const newImg = new Image({
           title: req.body.title,
           filename: imgUrl + ext,

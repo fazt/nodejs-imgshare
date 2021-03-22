@@ -1,31 +1,44 @@
 # imgShare
+
 imgShare is a web application to share images, comments, and more.
 
 ![](docs/screenshot1.png)
 
 # Environment Variables
-* `MONGODB_URI`, the mongodb database uri
-* `PORT` the http server port. By default is `3000`
+
+- `MONGODB_URI`, the mongodb database uri
+- `PORT` the http server port. By default is `3000`
 
 # Installation
+
 ```
 git clone https://github.com/FaztTech/nodejs-imgshare
 cd nodejs-imagshare
-npm install 
+npm install
+npm run build
 npm start
 ```
 
 # Docker
+
 ```
 docker-compose build
 ```
+
 ```
 docker-compose up
 ```
 
 # Tutorials
-* [Youtube (es)](https://youtu.be/TqC3e8nBycg)
+
+- [Youtube (es)](https://youtu.be/TqC3e8nBycg)
 
 # Improvements for the Future
-- Input Validation (to avoid XSS)
-- User Authentication
+
+- [x] Update with es6
+- [ ] add user authentication
+- [ ] Update docker compose
+- [ ] add input validation
+- [ ] add cloud storage for assets
+- [ ] update public/js/scripts.js with vanilla js
+- [ ] provides an API for client consumption
