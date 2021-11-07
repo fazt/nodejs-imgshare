@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
   {
@@ -8,7 +8,10 @@ const userSchema = new Schema(
       unique: true,
       trim: true,
     },
-    password: String,
+    password: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

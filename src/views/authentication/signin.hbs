@@ -3,29 +3,57 @@
   <div class="col-md-4 offset-md-4">
 
     {{#if success}}
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      {{success}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{success}}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     {{/if}}
 
-    <div class="card bg-dark">
-      <div class="card-body">
+    <div class="card bg-dark text-white">
+      <div class="card-body p-4">
         <h1 class="text-light">SignIn</h1>
         <form action="/auth/signin" method="POST">
-          <div class="form-group">
-            <input type="text" name="email" class="form-control" placeholder="youremail@company.com" autofocus>
+          <div class="mb-3">
+            <label for="email">Write your email:</label>
+            <input
+              type="text"
+              name="email"
+              class="form-control"
+              placeholder="youremail@company.com"
+              autofocus
+            />
           </div>
-          <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Password">
+          <div class="mb-3">
+            <label for="password">Write your password:</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              placeholder="Password"
+            />
           </div>
           <button class="btn btn-success btn-block">
             Login
           </button>
         </form>
+
       </div>
+
+    </div>
+
+    <div class="text-light">
+      <p class="my-3">Don't have an Account
+        <a href="/auth/signup" class="text-success">Create One</a></p>
+      <p class="my-3">Did Forget your Password
+        <a href="/auth/recovery-password" class="text-success">Reset Password</a></p>
+
     </div>
   </div>
 </div>

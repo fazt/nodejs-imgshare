@@ -1,8 +1,8 @@
-version: "3"
+version: "3.8"
 
 services: 
   web:
-    container_name: web
+    container_name: imgshare_web
     image: node
     build: .
     ports: 
@@ -14,9 +14,10 @@ services:
     environment: 
       - MONGODB_URI=mongodb://mongo/database
   mongo:
-    container_name: mongodb
+    container_name: imgshare_mongo
     image: mongo
     ports: 
       - 27017:27017
-
+    logging:
+      driver: none
   

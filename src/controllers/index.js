@@ -1,3 +1,3 @@
-export * as authCtrl from "./auth";
-export * as imageCtrl from "./image";
-export * as homeCtrl from "./home";
+export * as authCtrl from "./auth.controller";
+export * as imageCtrl from "./image.controller";
+export * as homeCtrl from "./home.controller";

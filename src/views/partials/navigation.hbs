@@ -1,32 +1,47 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark p-2">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <img src="/public/images/imgshare-logo.png" alt="imgShare">
+      <img src="/public/images/imgshare-logo.png" alt="imgShare" />
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ms-auto">
         {{#unless user}}
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/signin">SignIn</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/auth/signup">SignUp</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center" href="/auth/signin">
+              <span class="material-icons me-2">
+                account_circle
+              </span>
+              SignIn</a>
+          </li>
         {{else}}
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Profile
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/profile">Settings</a>
-            <a class="dropdown-item" href="/auth/logout">Logout</a>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="/#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Profile
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/profile">Settings</a>
+              <a class="dropdown-item" href="/auth/logout">Logout</a>
+            </div>
+          </li>
         {{/unless}}
       </ul>
     </div>

@@ -7,20 +7,16 @@ import exphbs from "express-handlebars";
 import flash from "connect-flash";
 import session from "express-session";
 import passport from "passport";
-import Handlebars from "handlebars";
 import "./config/passport";
 
-import routes from "./routes";
+import indexRoutes from "./routes/index.routes";
+import authRoutes from "./routes/auth.routes";
+
 import * as helpers from "./helpers";
-import config from "./config";
 
 const app = express();
-const {
-  allowInsecurePrototypeAccess,
-} = require("@handlebars/allow-prototype-access");
 
 // Settings
-app.set("port", config.port);
 app.set("views", path.join(__dirname, "./views"));
 app.engine(
   ".hbs",
@@ -30,7 +26,6 @@ app.engine(
     partialsDir: path.join(app.get("views"), "partials"),
     helpers,
     extname: ".hbs",
-    handlebars: allowInsecurePrototypeAccess(Handlebars),
   })
 );
 app.set("view engine", ".hbs");
@@ -66,7 +61,8 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use(routes);
+app.use(indexRoutes);
+app.use(authRoutes);
 
 // The Public directory for static files
 app.use("/public", express.static(path.join(__dirname, "./public")));

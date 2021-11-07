@@ -19,11 +19,7 @@ npm run build
 npm start
 ```
 
-# Docker
-
-```
-docker-compose build
-```
+# Installation with docker-compose (Recommended)
 
 ```
 docker-compose up
@@ -35,7 +31,6 @@ docker-compose up
 
 # Improvements for the Future
 
-- [x] Update with es6
 - [x] add user authentication
 - [ ] Update docker compose
 - [ ] add input validation
@@ -44,7 +39,6 @@ docker-compose up
 - [ ] provides an API for client consumption
 - [ ] hide /profile view from not authenticated users
 - [ ] validate routes just for authenticated users
-- [ ] add google icons from google fonts
 
 ## Resources
 

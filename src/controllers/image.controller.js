@@ -6,24 +6,34 @@ import sidebar from "../helpers/sidebar";
 import { randomNumber } from "../helpers/libs";
 import { Image, Comment } from "../models";
 
-export const index = async (req, res) => {
+export const index = async (req, res, next) => {
   let viewModel = { image: {}, comments: [] };
+
   const image = await Image.findOne({
     filename: { $regex: req.params.image_id },
   });
-  if (image) {
-    image.views = image.views + 1;
-    viewModel.image = image;
-    image.save();
-    const comments = await Comment.find({ image_id: image._id }).sort({
-      timestamp: 1,
-    });
-    viewModel.comments = comments;
-    viewModel = await sidebar(viewModel);
-    res.render("image", viewModel);
-  } else {
-    res.redirect("/");
-  }
+
+  // if image does not exists
+  if (!image) return next(new Error("Image does not exists"));
+
+  // increment views
+  const updatedImage = await Image.findOneAndUpdate(
+    { _id: image.id },
+    { $inc: { views: 1 } }
+  ).lean();
+
+  viewModel.image = updatedImage;
+
+  // get image comments
+  const comments = await Comment.find({ image_id: image._id }).sort({
+    timestamp: 1,
+  });
+
+  viewModel.comments = comments;
+  viewModel = await sidebar(viewModel);
+
+  console.log(viewModel);
+  res.render("image", viewModel);
 };
 
 export const create = (req, res) => {

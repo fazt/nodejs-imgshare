@@ -2,29 +2,50 @@
   <div class="col-md-4 offset-md-4">
 
     {{#if error}}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{error}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{error}}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     {{/if}}
 
     <div class="card bg-dark text-light">
-      <div class="card-body">
+      <div class="card-body p-4">
         <h3 class="text-light h1">SignUp</h3>
         <form action="/auth/signup" method="POST">
-          <div class="form-group">
-            <input type="text" name="email" class="form-control bg-dark text-light border border-success"
-              placeholder="youremail@company.com" autofocus>
+          <div class="mb-3">
+            <label for="email">Write your email:</label>
+            <input
+              type="text"
+              name="email"
+              class="form-control bg-dark text-light border border-success"
+              placeholder="youremail@company.com"
+              autofocus
+            />
           </div>
-          <div class="form-group">
-            <input type="password" name="password" class="form-control bg-dark text-light border border-success"
-              placeholder="Password">
+          <div class="mb-3">
+            <label for="password">Write your Password:</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control bg-dark text-light border border-success"
+              placeholder="Password"
+            />
           </div>
-          <div class="form-group">
-            <input type="password" name="confirm-password" class="form-control bg-dark text-light border border-success"
-              placeholder="Confirm Password">
+          <div class="mb-3">
+            <label for="confirm-password">Repite tu Contraseña:</label>
+            <input
+              type="password"
+              name="confirm-password"
+              class="form-control bg-dark text-light border border-success"
+              placeholder="Confirm Password"
+            />
           </div>
           <button class="btn btn-success btn-block">
             SignUp
@@ -32,6 +53,7 @@
         </form>
       </div>
     </div>
-
+    <p class="my-3">Do you have an Account
+      <a href="/auth/signin" class="text-success">Login</a></p>
   </div>
 </div>
