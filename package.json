@@ -20,7 +20,7 @@
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-handlebars": "^5.3.4",
     "express-session": "^1.17.2",
     "fs-extra": "^10.0.0",
