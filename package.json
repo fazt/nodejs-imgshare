@@ -40,7 +40,7 @@
     "@babel/plugin-transform-runtime": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "ncp": "^2.0.0",
-    "nodemon": "^2.0.14",
+    "nodemon": "^2.0.20",
     "rimraf": "^3.0.2"
   }
 }
